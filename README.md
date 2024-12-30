@@ -15,6 +15,17 @@ This is a hospital management system written in php(Laravel)
     * Admin
     * Doctor
     * Patient
+* Login Details for Admin :
+email : admin@gmail.com
+Password : 12345678
+
+* Login Details for Doctor :
+email : doctor@gmail.com
+Password : 12345678
+
+* Login Details for Patient :
+email : patient@gmail.com
+Password : 12345678
 
  
 # Installation Guide
