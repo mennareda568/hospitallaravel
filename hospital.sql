@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2024 at 09:07 PM
+-- Generation Time: Dec 30, 2024 at 07:46 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -91,6 +91,14 @@ CREATE TABLE `doctors` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `doc_image`, `name`, `email`, `password`, `department`, `gender`, `phone`, `address`, `age`, `days`, `time`, `Consultancyfees`, `created_at`, `updated_at`) VALUES
+(1, '173534535993.jpg', 'doctor', 'doctor@gmail.com', '$2y$10$SbrBYFQ9s8PBX8W2HzsspOLwizncpFXCvOtMADShj36AL0AoTo/zK', 'dental', 'female', '46464', 'cairo', 34, 'sat-mon-wed', '12pm to 8pm', 300, '2024-12-27 22:22:39', '2024-12-27 22:22:39'),
+(3, '173557902831.jpg', 'doctor2', 'doctor2@gmail.com', '$2y$10$hu7UW9/Pw8uIpZLCD9ChYeAhqhPwZMuoZ.2aPvj1ICWzt2X5JTNPu', 'dental', 'female', '222', 'cairo', 43, 'every sat', '10am to 5pm', 250, '2024-12-30 15:17:08', '2024-12-30 15:17:08');
+
 -- --------------------------------------------------------
 
 --
@@ -127,7 +135,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `name`, `email`, `mobil`, `message`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'doctor@gmail.com', '727272', 'good', '2024-12-26 18:39:43', '2024-12-26 18:39:43');
+(1, 'doctor', 'doctor@gmail.com', '727272', 'good', '2024-12-26 18:39:43', '2024-12-26 18:39:43');
 
 -- --------------------------------------------------------
 
@@ -159,7 +167,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2024_12_27_130459_create_patientbookings_table', 3),
 (12, '2024_12_27_153507_create_doctors_table', 4),
 (13, '2024_12_27_180621_create_patientbookings_table', 5),
-(14, '2024_12_27_200108_create_doctors_table', 6);
+(14, '2024_12_27_200108_create_doctors_table', 6),
+(15, '2024_12_30_162956_create_relations_table', 7),
+(16, '2024_12_30_173907_create_patients_table', 8),
+(17, '2024_12_30_181307_create_patients_table', 9);
 
 -- --------------------------------------------------------
 
@@ -195,6 +206,14 @@ CREATE TABLE `patientbookings` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `patientbookings`
+--
+
+INSERT INTO `patientbookings` (`id`, `doctor`, `doctoremail`, `department`, `days`, `time`, `patientname`, `patientemail`, `patientphone`, `patientage`, `consultancyfees`, `created_at`, `updated_at`) VALUES
+(17, 'doctor', 'doctor@gmail.com', 'dental', 'sat-mon-wed', '12pm', 'patient', 'patient@gmail.com', '7757', '30', 300, '2024-12-27 22:32:44', '2024-12-27 22:32:44'),
+(19, 'doctor', 'doctor@gmail.com', 'dental', 'sat-mon-wed', '12pm', 'menna', 'patient@gmail.com', '222', '43', 300, '2024-12-30 14:49:06', '2024-12-30 14:49:06');
+
 -- --------------------------------------------------------
 
 --
@@ -203,6 +222,7 @@ CREATE TABLE `patientbookings` (
 
 CREATE TABLE `patients` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `doctoremail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` enum('female','male') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -210,6 +230,7 @@ CREATE TABLE `patients` (
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` int(11) NOT NULL,
   `medicalhistory` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -218,9 +239,9 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`id`, `name`, `email`, `gender`, `phone`, `address`, `age`, `medicalhistory`, `created_at`, `updated_at`) VALUES
-(1, 'patinet1', 'patient@gmail.com', 'male', '123753', 'alexandria', 57, 'none', '2024-12-26 18:27:50', '2024-12-26 18:29:35'),
-(2, 'patinet2', 'patient2@gmail.com', 'female', '46464', 'mahalla', 66, 'none', '2024-12-26 18:28:27', '2024-12-26 18:29:42');
+INSERT INTO `patients` (`id`, `doctoremail`, `name`, `email`, `gender`, `phone`, `address`, `age`, `medicalhistory`, `prescription`, `created_at`, `updated_at`) VALUES
+(1, 'doctor@gmail.com', 'patinet', 'patient@gmail.com', 'male', '112345', 'cairo', 66, 'none', 'ddd', '2024-12-30 16:23:19', '2024-12-30 16:23:29'),
+(2, 'doctor@gmail.com', 'patinet2', 'patient2@gmail.com', 'female', '112348', 'cairo', 50, 'none', 'ddd', '2024-12-30 16:37:01', '2024-12-30 16:37:01');
 
 -- --------------------------------------------------------
 
@@ -247,7 +268,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'patinet', 'patient@gmail.com', NULL, '$2y$10$VT1NuDBNf9JCB2qWgDx0he9smmv9grfDTTkFk2DACITFKeJqZ6tvi', 'patient', NULL, '2024-12-26 17:22:18', '2024-12-26 17:22:18'),
 (2, 'admin', 'admin@gmail.com', NULL, '$2y$10$2kD.WoAf4vYLnu8Y/LaJpO3Rb5ty0nc1JOmbkKqatzJkUaMat/25i', 'admin', NULL, '2024-12-26 17:22:51', '2024-12-26 17:22:51'),
-(3, 'doctor', 'doctor@gmail.com', NULL, '$2y$10$qv98jxVKdMRXYTRJJzhtz.nqcHxNooY1yuB.c4ILQjqdYDniu1mgC', 'doctor', NULL, '2024-12-26 17:23:52', '2024-12-26 17:23:52');
+(3, 'doctor', 'doctor@gmail.com', NULL, '$2y$10$qv98jxVKdMRXYTRJJzhtz.nqcHxNooY1yuB.c4ILQjqdYDniu1mgC', 'doctor', NULL, '2024-12-26 17:23:52', '2024-12-26 17:23:52'),
+(9, 'menna', 'menna@gmail.com', NULL, '$2y$10$D/xEOtJ.kIUS.y/e8Fs9uuGxRS7QzwG4CMxbgQbkZmMz00jbvLjHa', 'doctor', NULL, '2024-12-27 22:33:20', '2024-12-27 22:33:20'),
+(10, 'menna', 'patient2@gmail.com', NULL, '$2y$10$6LmM5xcHJH6heSEruAFl.eqau27mQAtd.yG/rS.HRfgUFMZA99BVe', 'patient', NULL, '2024-12-30 14:50:20', '2024-12-30 14:50:20');
 
 --
 -- Indexes for dumped tables
@@ -337,7 +360,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -355,25 +378,25 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `patientbookings`
 --
 ALTER TABLE `patientbookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

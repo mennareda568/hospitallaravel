@@ -7,23 +7,11 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="text-center">
-                                {{ __('language.MYBOOKINGS') }}
+                                <a href="{{ route('relation') }}">
+                                    {{ __('language.MYBOOKINGS') }}
+                                </a>
                                 <i class="fa-solid fa-book-medical fa-2xl"></i>
                             </div>
-                        </div>
-                        <div class="card-body text-center">
-                            <form class="text-center" action={{ route('searchbook') }} method="get">
-                                @if (session('message'))
-                                <h4 class="alert alert-success mt-2">{{ session('message') }}</h4>
-                                @endif
-                                <div class="input-group">
-                                    <input type="hidden" name="search" class="form-control"
-                                    value="{{ Auth::user()->email }}">
-                                    <span class="input-group-prepend ">
-                                        <button type="submit" class="btn btn-primary">{{ __('language.VIEWMYBOOKING') }}</button>
-                                    </span>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -101,19 +89,10 @@
                 <div class="col-md-4 ">
                     <div class="card">
                         <div class="card-header text-center">
+                            <a href="{{route('myapp')}}">
                                 {{ __('language.MYAPPOINTMENTS') }}
+                            </a>
                             <i class="fa-regular fa-calendar-check fa-2xl"></i>
-                        </div>
-                        <div class="card-body text-center">
-                            <form action={{ route('searchapp') }} method="get">
-                                <div class="input-group">
-                                    <input type="hidden" name="search" class="form-control"
-                                        value="{{ Auth::user()->email }}">
-                                    <span class="input-group-prepend">
-                                        <button type="submit" class="btn btn-primary">{{ __('language.VIEWMYAPPOINTMENTS') }}</button>
-                                    </span>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -128,9 +107,6 @@
                                 </a>
                                 <i class="fa-solid fa-hospital-user fa-2xl"></i>
                             </div>
-                        </div>
-                        <div class="card-body text-center ">
-                            {{ $countpatients }}
                         </div>
                     </div>
                 </div>

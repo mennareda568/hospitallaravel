@@ -76,9 +76,9 @@ Route::group(
             function () { 
 
                 //appointment table  
-                Route::get('/searchapp', 'HomeController@searchapp')->name('searchapp');             
+                Route::get('/myappointment', 'HomeController@myapp')->name('myapp');             
                 //patients table  
-                Route::get('/patients', 'PatientController@index')->name('patient'); 
+                Route::get('/mypatients', 'PatientController@index')->name('patient'); 
                 Route::get('/patients/delete/{id}', 'PatientController@delete')->name('deletepatient');
                 Route::get('/patients/create', 'PatientController@create')->name('createpatient');
                 Route::post('/patients/save', 'PatientController@savenew')->name('savepatient');
@@ -97,12 +97,13 @@ Route::group(
                 Route::get('/searchlist', 'DoctorController@searchlist')->name('searchlist');
 
                 //patientbooking 
-                Route::get('/searchbook', 'PatientbookingController@searchbook')->name('searchbook');             
+                Route::get('/mybooking', 'PatientbookingController@index')->name('relation');
                 Route::get('/doctor/book/{id}', 'PatientbookingController@book')->name('bookappoint');
                 Route::post('/doctor/savebook', 'PatientbookingController@savebook')->name('savebooking'); 
                 Route::get('/booking/edit/{id}', 'PatientbookingController@edit')->name('editbook');
                 Route::post('/booking/update', 'PatientbookingController@saveedit')->name('updatebook');
                 Route::get('/booking/delete/{id}', 'PatientbookingController@delete')->name('deletebook');
+
             }
         ); 
     }

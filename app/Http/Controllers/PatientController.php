@@ -8,20 +8,12 @@ use Illuminate\Http\Request;
 class PatientController extends Controller
 {
 
-
-    public function index()
+    public function index(Request $request)
     {
-        $Patient = Patient::paginate(3); 
-        return view('patient', [
-            "result" => $Patient,
-        ]);
-    }
-
-
-    public function show($id)
-    {
-        $Patient = Patient::findOrFail($id);
-        return view('Patient/show', ["result" => $Patient]);
+        $data = Patient::userData()->get();
+        $patients = $data->count();
+        $page = Patient::paginate(3); 
+        return view('patient', compact('data','page','patients'));
     }
 
     public function delete($id)
@@ -46,8 +38,10 @@ class PatientController extends Controller
             'phone' => 'required',
             'age' => 'required',
             'medicalhistory' => 'required',
+            'prescription' => 'required' 
         ]);
         Patient::create([
+            "doctoremail" => $item->doctoremail,
             "name" => $item->name,
             "email" => $item->email,
             "gender" => $item->gender,
@@ -55,6 +49,7 @@ class PatientController extends Controller
             "phone" => $item->phone,
             "age" => $item->age,
             "medicalhistory" => $item->medicalhistory,
+            "prescription" => $item->prescription 
         ]);
 
         return redirect()->route('patient')->with("message", "Created Successfully");
@@ -79,8 +74,10 @@ class PatientController extends Controller
             'phone' => 'required',
             'age' => 'required',
             'medicalhistory' => 'required',
+            'prescription' => 'required' 
         ]);
         $Patient->update([
+            "doctoremail" => $request->doctoremail,
             "name" => $request->name,
             "email" => $request->email,
             "gender" => $request->gender,
@@ -88,6 +85,8 @@ class PatientController extends Controller
             "phone" => $request->phone,
             "age" => $request->age,
             "medicalhistory" => $request->medicalhistory,
+            "prescription" => $request->prescription 
+
         ]);
         return redirect()->route("patient")->with("message", "edited successfully");
     }

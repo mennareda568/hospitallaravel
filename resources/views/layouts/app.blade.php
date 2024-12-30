@@ -41,7 +41,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-
+                        
                         @if (Auth::user() && Auth::user()->role == 'admin')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin') }}">{{ __('language.ADMINS') }}</a>
@@ -53,6 +53,7 @@
                                 <a class="nav-link" href="{{ route('user') }}">{{ __('language.USERMANAGMENT') }}</a>
                             </li>
                         @endif
+
 
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <li class="nav-item">

@@ -6,11 +6,17 @@
                 <div class="card">
                     <div class="card-header">
                         {{ __('language.PATIENTS') }}
+                        {{$patients}}
                     </div>
                     <div class="card-body ">
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{ route('createpatient') }}"
-                            class="btn btn-success mt-2">{{ __('language.CREATENEWPATIENT') }}</a>
+                        {{-- @foreach ($result as $item) --}}
+                        <a href="{{ route('createpatient') }}" 
+                            class="btn btn-success mt-2">
+                            
+                            {{ __('language.CREATENEWPATIENT') }}</a>
+                            {{-- @endforeach --}}
+                        
                         <form action={{ route('searchpatient') }} method="get">
                             <div class="input-group">
                                 <input type="search" name="search" class="form-control">
@@ -38,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($result as $item)
+                                @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
@@ -58,7 +64,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $result->links() }} <!-- Display pagination links -->
+                        {{ $page->links() }} <!-- Display pagination links -->
                     </div>
                 </div>
             </div>

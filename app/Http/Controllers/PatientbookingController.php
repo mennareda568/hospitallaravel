@@ -8,27 +8,17 @@ use Illuminate\Http\Request;
 
 class PatientbookingController extends Controller
 {
-
-    
-
-    public function searchbook(Request $request)
+    public function index(Request $request)
     {
-        $search = $request->get('search');
-        $users = Patientbooking::when($search, function ($sql) use ($search) {
-            $sql->where('patientemail', 'like', '%' . $search . '%');
-        })
-            ->paginate(4);
-
-        return view('bookingsearch',  [
-            "data" => $users,
-        ]);
+        $data = Patientbooking::userData()->get();
+        return view('mybooking', compact('data'));
     }
 
     public function delete($id)
     {
         $booking = Patientbooking::findOrFail($id);
         $booking->delete();
-        return redirect()->route('home')->with("message", "deleted successfully");
+        return redirect()->route('relation')->with("message", "deleted successfully");
     }
 
     public function edit($id)
@@ -56,7 +46,7 @@ class PatientbookingController extends Controller
             "patientphone" => $request->patientphone,
             "patientage" => $request->patientage,
         ]);
-        return redirect()->route('home')->with("message", "Updated Successfully");
+        return redirect()->route('relation')->with("message", "Updated Successfully");
     }
 
     public function book($id)
@@ -90,6 +80,6 @@ class PatientbookingController extends Controller
             "patientage" => $item->patientage,
             "consultancyfees" => $item->consultancyfees,
         ]);
-        return redirect()->route('home')->with("message", "Booked Successfully");
+        return redirect()->route('relation')->with("message", "Booked Successfully");
     }
 }

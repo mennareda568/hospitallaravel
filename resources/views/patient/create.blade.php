@@ -6,7 +6,8 @@
         <div class="col-md-10 m-auto">
             <form enctype="multipart/form-data" method="post" action="{{route('savepatient')}}">
                 @csrf
-
+                <input type="hidden" name="doctoremail"  value="{{ Auth::user()->email }}">
+               
                 <label>{{__('language.PATIENTNAME')}}</label>
                 <input type="text" name="name" class="form-control mb-4">
                 @error('name')
@@ -62,6 +63,11 @@
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
+                <label>{{__('language.PRESCRIPTION')}}</label>
+                <input type="text" name="prescription" class="form-control mb-4">
+                @error('prescription')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <input type="submit" value='{{__('language.CREATE')}}' class="form-control btn btn-success">
 
             </form>

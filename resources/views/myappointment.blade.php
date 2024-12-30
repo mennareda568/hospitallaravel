@@ -7,10 +7,8 @@
         <div class="card">
             <div class="card-header">
                 {{ __('language.MYAPPOINTMENTS') }}
-                {{$data->total()}}
             </div>
             <div class="card-body">
-                @if ($data->total() > 0)
                 <table class="table table-dark mt-3">
                     <thead>
                         <tr>
@@ -35,10 +33,6 @@
                             @endforeach
                     </tbody>
                 </table>
-                {{ $data->links() }}
-                @else
-                    <p class="mt-3"> {{ __('language.NOAPPOINTMENTS') }}</p>
-                @endif
             </div>
         </div>
     </div>

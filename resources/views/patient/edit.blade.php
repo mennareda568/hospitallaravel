@@ -5,7 +5,8 @@
         <div class="col-md-10 m-auto">
          <form enctype="multipart/form-data" action="{{route('updatepatients')}}" method="post" >
             @csrf
-                <input type="hidden" name="old_id" class="form-control mb-4" value="{{$result->id}}">
+                <input type="hidden" name="old_id" value="{{$result->id}}">
+                <input type="hidden" name="doctoremail" value="{{$result->doctoremail}}">
 
                 <label>{{__('language.PATIENTNAME')}}</label>
                 <input type="text" name="name" class="form-control mb-4" value="{{$result->name}}">
@@ -46,6 +47,11 @@
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
+                <label>{{__('language.PRESCRIPTION')}}</label>
+                <input type="text" name="prescription" class="form-control mb-4" value="{{$result->prescription}}">
+                @error('prescription')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <input type="submit" value='{{__('language.EDIT')}}' class="form-control btn btn-success">
 
             </form>

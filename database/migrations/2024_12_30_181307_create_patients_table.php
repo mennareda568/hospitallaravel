@@ -15,6 +15,7 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
+            $table->string('doctoremail');
             $table->string('name');
             $table->string('email')->unique();
             $table->enum('gender',['female','male']);
@@ -22,6 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string('address');
             $table->integer('age');
             $table->string('medicalhistory');
+            $table->string('prescription');
             $table->timestamps();
         });
     }

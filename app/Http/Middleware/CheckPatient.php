@@ -9,6 +9,7 @@ class CheckPatient
     
     public function handle($request, Closure $next)
     {
+        
         if (Auth::user() && Auth::user()->role =="patient"){
             return $next($request);
 
