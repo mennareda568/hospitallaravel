@@ -10,13 +10,10 @@
                     </div>
                     <div class="card-body ">
                     <div class="d-flex align-items-center justify-content-between">
-                        {{-- @foreach ($result as $item) --}}
                         <a href="{{ route('createpatient') }}" 
                             class="btn btn-success mt-2">
-                            
-                            {{ __('language.CREATENEWPATIENT') }}</a>
-                            {{-- @endforeach --}}
-                        
+                            {{ __('language.CREATENEWPATIENT') }}
+                        </a>
                         <form action={{ route('searchpatient') }} method="get">
                             <div class="input-group">
                                 <input type="search" name="search" class="form-control">
