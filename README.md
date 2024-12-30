@@ -1,3 +1,4 @@
+(Hospital Management System)
 This is a hospital management system written in php(Laravel)
 
 This has the following features:
