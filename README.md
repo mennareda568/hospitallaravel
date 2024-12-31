@@ -37,8 +37,13 @@ Installation Guide:
 1)Install Composer In Your PC
 
 2)Execute the Following Command :
-    composer install
-    composer update
-    composer dump-autoload
-    php artisan migrate
-    php artisan serve to run the project
+
+    1_composer install
+    
+    2_composer update
+    
+    3_composer dump-autoload
+    
+    4_php artisan migrate
+    
+    5_php artisan serve to run the project
