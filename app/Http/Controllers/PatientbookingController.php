@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Model\Doctor;
@@ -8,12 +7,14 @@ use Illuminate\Http\Request;
 
 class PatientbookingController extends Controller
 {
+    //show booking table
     public function index(Request $request)
     {
         $data = Patientbooking::userData()->get();
         return view('mybooking', compact('data'));
     }
 
+    //delete booking 
     public function delete($id)
     {
         $booking = Patientbooking::findOrFail($id);
@@ -21,12 +22,14 @@ class PatientbookingController extends Controller
         return redirect()->route('relation')->with("message", "deleted successfully");
     }
 
+    //update booking 
     public function edit($id)
     {
         $booking = Patientbooking::findOrFail($id);
         return view("patientbooking/edit", ["result" => $booking]);
     }
 
+    //saveupdate booking 
     public function saveedit(Request $request)
     {
         $old_id = $request->old_id;
@@ -49,19 +52,25 @@ class PatientbookingController extends Controller
         return redirect()->route('relation')->with("message", "Updated Successfully");
     }
 
+    //book new appointments 
     public function book($id)
     {
-        $patibook = Patientbooking::count();
-        if ($patibook > 4) {
-            return redirect()->route('doctorlist')->with("message", "No Booking Available");
+        $Doctor = Doctor::findOrFail($id);
+        $doctorEmail=$Doctor->email;
+        $bookingsCount = PatientBooking::where('doctoremail', $doctorEmail)
+            ->count();
+        if ($bookingsCount >= 3) {
+            return redirect()->route('doctorlist')->with("message", "Doctor Has No Booking Available");
+    
         } else {
-            $Doctor = Doctor::findOrFail($id);
             return view('patientbooking/create', ["result" => $Doctor]);
         }
     }
 
+    //savebook new appointments 
     public function savebook(Request $item)
     {
+        
         $item->validate([
             'patientname' => 'required',
             'patientage' => 'required',
@@ -82,4 +91,6 @@ class PatientbookingController extends Controller
         ]);
         return redirect()->route('relation')->with("message", "Booked Successfully");
     }
+
 }
+

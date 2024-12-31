@@ -6,11 +6,10 @@
                 <div class="card">
                     <div class="card-header">
                         {{ __('language.DOCTORS') }}
+                        {{ $countdoctors }}
                     </div>
                     <div class="card-body ">
                         <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('createdoctor') }}"
-                                class="btn btn-success mt-2">{{ __('language.CREATEDOCTORACCOUNT') }}</a>
                             <form action={{ route('searchdoc') }} method="get">
                                 <div class="input-group">
                                     <input type="search" name="search" class="form-control">
@@ -50,8 +49,6 @@
                                         <td>
                                             <a href="{{ route('showdoctor', $item->id) }}" class="btn btn-success"><i
                                                     class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('editdoctor', $item->id) }}" class="btn btn-primary"><i
-                                                    class="fa-solid fa-pen-to-square"></i></a>
                                             <a href="{{ route('deletedoctor', $item->id) }}" class="btn btn-danger"><i
                                                     class="fa-solid fa-trash"></i></a>
                                         </td>

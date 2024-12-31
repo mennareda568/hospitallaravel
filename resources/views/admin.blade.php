@@ -7,8 +7,7 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center justify-content-between">
                             {{ __('language.ADMINS') }}
-                            <a href="{{ route('createadmin') }}"
-                                class="btn btn-success">{{ __('language.CREATEADMINACCOUNT') }}</a>
+                            {{ $admins }} 
                         </div>
                     </div>
                     <div class="card-body ">
@@ -26,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($result as $item)
+                                @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
@@ -44,7 +43,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $result->links() }} <!-- Display pagination links -->
+                        {{ $data->links() }} <!-- Display pagination links -->
                     </div>
                 </div>
             </div>

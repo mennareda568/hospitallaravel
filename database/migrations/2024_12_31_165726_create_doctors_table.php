@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 class CreateDoctorsTable extends Migration
 {
     /**
@@ -14,18 +15,18 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('doc_image');
+            $table->string('doc_image')->default("null");
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
-            $table->string('department');
-            $table->enum('gender',['female','male']);
-            $table->string('phone');
-            $table->string('address');
-            $table->integer('age');
-            $table->string('days');
-            $table->string('time');
-            $table->integer('Consultancyfees');
+            $table->string('department')->default("null");
+            $table->enum('gender',['female','male'])->default("male");
+            $table->string('phone')->default("null");
+            $table->string('address')->default("cairo");
+            $table->integer('age')->default("30");
+            $table->string('days')->default("null");
+            $table->string('time')->default("null");
+            $table->integer('Consultancyfees')->default("300");
             $table->timestamps();
         });
     }

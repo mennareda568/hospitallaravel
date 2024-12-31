@@ -3,9 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 m-auto">
-            <form enctype="multipart/form-data" method="post" action="{{route('saveadmin')}}">
+            <form enctype="multipart/form-data" method="post" action="{{route('saveuser')}}">
                 @csrf
-                <label>{{__('language.ADMINNAME')}}</label>
+                <label>{{__('language.USERNAME')}}</label>
                 <input type="text" name="name" class="form-control mb-4">
                 @error('name')
                  <div class="alert alert-danger">{{ $message }}</div>
@@ -26,38 +26,24 @@
 
                 <div class="form-group">
                     <label class="block">
-                        {{__('language.GENDER')}}
+                        {{__('language.ROLE')}}
                     </label>
                     <div class="clip-radio radio-primary">
-                    <input type="radio" id="rg-female" name="gender" value="female" >
+                    <input type="radio" id="rg-female" name="role" value="doctor" >
                     <label for="rg-female">
-                        {{__('language.FEMALE')}}
+                        {{__('language.DOCTOR')}}
                     </label>
-                    <input type="radio" id="rg-male" name="gender" value="male">
+                    <input type="radio" id="rg-male" name="role" value="admin">
                     <label for="rg-male">
-                        {{__('language.MALE')}}
+                        {{__('language.ADMIN')}}
                     </label>
                     </div>
                     </div>
-                @error('gender')
+                @error('role')
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <label>{{__('language.ADDRESS')}}</label>
-                <input type="text" name="address" class="form-control mb-4">
-                @error('address')
-                 <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
-                <label>{{__('language.PHONE')}}</label>
-                <input type="text" name="phone" class="form-control mb-4">
-                @error('phone')
-                 <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
-
-                <input type="submit" value='{{__('language.CREATEADMINACCOUNT')}}' class="form-control btn btn-success">
-
+                <input type="submit" value='{{__('language.CREATEUSERACCOUNT')}}' class="form-control btn btn-success">
             </form>
         </div>
     </div>

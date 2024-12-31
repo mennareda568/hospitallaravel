@@ -31,6 +31,7 @@ return [
     "DOCTORS"=> 'Doctors ',
     "PATIENT"=> 'Patient ',
     "PATIENTS"=> 'Patients ',
+    "MYPATIENTS"=> 'My Patients ',
     "FEMALE"=> 'female ',
     "MALE"=> 'male ',
     "PATIENTNAME"=> 'Patient Name ',
@@ -96,8 +97,12 @@ return [
     "MYAPPOINTMENTS"=> 'My Appointments',
     "NOBOOKING"=> 'No Booking',
     "NOAPPOINTMENTS"=> 'No Appointments',
+    "ADDADMINDOCTOR"=> 'Add Admin/Doctor',
+    "UPDATEMYPROFILE"=> 'Update My Profile',
+    "CHANGEMYPASSWORD"=> 'Change My Password',
 
 
+    
 
 
 

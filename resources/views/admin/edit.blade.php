@@ -33,6 +33,25 @@
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
+                <div class="form-group">
+                    <label class="block">
+                        {{__('language.GENDER')}}
+                    </label>
+                    <div class="clip-radio radio-primary">
+                    <input type="radio" id="rg-female" name="gender" value="female" >
+                    <label for="rg-female">
+                        {{__('language.FEMALE')}}
+                    </label>
+                    <input type="radio" id="rg-male" name="gender" value="male">
+                    <label for="rg-male">
+                        {{__('language.MALE')}}
+                    </label>
+                    </div>
+                    </div>
+                @error('gender')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
 
                 <label>{{__('language.PHONE')}}</label>
                 <input type="text" name="phone" class="form-control mb-4" value="{{$result->phone}}">

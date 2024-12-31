@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Model\Message;
 use Illuminate\Http\Request;

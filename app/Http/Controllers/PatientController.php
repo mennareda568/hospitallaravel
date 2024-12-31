@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Model\Patient;
 use Illuminate\Http\Request;
@@ -7,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-
+    //show patient table
     public function index(Request $request)
     {
         $data = Patient::userData()->get();
@@ -16,6 +15,7 @@ class PatientController extends Controller
         return view('patient', compact('data','page','patients'));
     }
 
+    //delete patient 
     public function delete($id)
     {
         $Patient = Patient::findOrFail($id);
@@ -23,11 +23,13 @@ class PatientController extends Controller
         return redirect()->route('patient')->with("message", "deleted successfully");
     }
 
+    //create patient 
     public function create()
     {
         return view('patient/create');
     }
 
+    //savecreate patient 
     public function savenew(Request $item)
     {
         $item->validate([
@@ -55,12 +57,14 @@ class PatientController extends Controller
         return redirect()->route('patient')->with("message", "Created Successfully");
     }
 
+    //update patient information 
     public function edit($id)
     {
         $Patient = Patient::findOrFail($id);
         return view("patient/edit", ["result" => $Patient]);
     }
 
+    //saveupdate patient information 
     public function saveedit(Request $request)
     {
         $old_id = $request->old_id;
@@ -91,6 +95,7 @@ class PatientController extends Controller
         return redirect()->route("patient")->with("message", "edited successfully");
     }
 
+    //search patient table 
     public function search (Request $request)
     {
         $search = $request->get('search');

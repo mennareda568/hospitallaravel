@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Model\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,14 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-
-
+  
     public function index()
     {
-        $admin = Admin::paginate(3); 
-        return view('admin', [
-            "result" => $admin,
-        ]);
+        $admins = Admin::count();
+        $data = Admin::paginate(4); 
+        return view('admin', compact('data','admins'));
     }
 
     public function show($id)
@@ -27,39 +25,14 @@ class AdminController extends Controller
 
     public function delete($id)
     {
+        $user = User::findOrFail($id);
+        $user->delete();
+
         $admin = Admin::findOrFail($id);
         $admin->delete();
         return redirect()->route('admin')->with("message", "deleted successfully");
     }
 
-    public function create()
-    {
-        return view('admin/create');
-    }
-
-    public function savenew(Request $item)
-    {
-        $item->validate([
-            'name' => 'required',
-            'email' => 'required|unique:admins',
-            'password' => 'required',
-            'gender' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
-        ]);
-       
-        Admin::create([
-            "name" => $item->name,
-            "email" => $item->email,
-            'password' => Hash::make($item['password']),
-            "gender" => $item->gender,
-            "address" => $item->address,
-            "phone" => $item->phone,
-
-        ]);
-
-        return redirect()->route('admin')->with("message", "Created Successfully");
-    }
 
     public function edit($id)
     {
@@ -71,13 +44,15 @@ class AdminController extends Controller
     {
         $old_id = $request->old_id;
         $admin = Admin::findOrFail($old_id);
+        $user = User::findOrFail($old_id);
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:admins',
+            'email' => 'required|email|unique:users,email,'.$user->id,
             'password' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'gender' => 'required',
         ]);
 
         $admin->update([
@@ -85,7 +60,14 @@ class AdminController extends Controller
             "email" => $request->email,
             'password' => Hash::make($request['password']),
             "address" => $request->address,
+            "gender" => $request->gender,
             "phone" => $request->phone,
+        ]);
+
+        $user->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            'password' => Hash::make($request['password']),
         ]);
         return redirect()->route("admin")->with("message", "edited successfully");
     }

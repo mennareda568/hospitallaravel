@@ -50,10 +50,20 @@
                                 <a class="nav-link" href="{{ route('message') }}">{{ __('language.MESSAGES') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user') }}">{{ __('language.USERMANAGMENT') }}</a>
+                                <a class="nav-link btn btn-success" href="{{ route('createuser') }}">{{ __('language.ADDADMINDOCTOR') }}</a>
                             </li>
                         @endif
 
+
+                        @if (Auth::user() && Auth::user()->role == 'doctor')
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success" href="{{ route('editdoctor', Auth::user()->id ) }}">{{ __('language.UPDATEMYPROFILE') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary ml-3" href="{{ route('password') }}">{{ __('language.CHANGEMYPASSWORD') }}</a>
+                        </li>
+                    @endif
+                        
 
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <li class="nav-item">

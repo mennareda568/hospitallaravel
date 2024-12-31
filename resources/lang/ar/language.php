@@ -103,7 +103,10 @@ return [
     "DAYS"=> 'الايام ',
     "MYAPPOINTMENTS"=> 'مواعيدي',
     "NOBOOKING"=> 'لا حجوزات',
-    
+    "ADDADMINDOCTOR"=> 'اضافة طبيب /ادمن',
+    "UPDATEMYPROFILE"=> 'تحديث صفحتي',
+    "CHANGEMYPASSWORD"=> 'تغيير كلمة المرور',
+    "MYPATIENTS"=> 'المرضي',
 
 
 

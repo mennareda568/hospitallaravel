@@ -2,8 +2,12 @@
 @section('content')
     <div class="container mt-5">
         @if (Auth::user() && Auth::user()->role == 'patient')
+        @if (session('message'))
+        <h4 class="alert alert-success">{{ session('message') }}</h4>
+        @endif
             <div class="row">
                 <div class="col-md-4 ">
+                  
                     <div class="card">
                         <div class="card-header">
                             <div class="text-center">
@@ -33,6 +37,7 @@
             </div>
         @endif
         @if (Auth::user() && Auth::user()->role == 'admin')
+        
             <div class="row mt-5">
                 <div class="col-md-4 m-auto ">
                     <div class="card">
@@ -85,25 +90,26 @@
             </div>
         @endif
         @if (Auth::user() && Auth::user()->role == 'doctor')
+        @if (session('messagedoc'))
+        <h4 class="alert alert-success">{{ session('messagedoc') }}</h4>
+        @endif
             <div class="row mt-5">
-                <div class="col-md-4 ">
+                <div class="col-md-5 ">
                     <div class="card">
                         <div class="card-header text-center">
-                            <a href="{{route('myapp')}}">
+                            <a href="{{ route('myapp') }}">
                                 {{ __('language.MYAPPOINTMENTS') }}
                             </a>
                             <i class="fa-regular fa-calendar-check fa-2xl"></i>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-4 ">
+                <div class="col-md-5 ">
                     <div class="card">
                         <div class="card-header">
                             <div class="text-center">
                                 <a href="{{ route('patient') }}">
-                                    {{ __('language.PATIENTS') }}
+                                    {{ __('language.MYPATIENTS') }}
                                 </a>
                                 <i class="fa-solid fa-hospital-user fa-2xl"></i>
                             </div>
@@ -111,6 +117,7 @@
                     </div>
                 </div>
             </div>
+           
     </div>
     @endif
     </div>

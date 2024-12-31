@@ -10,6 +10,7 @@ class Patientbooking extends Model
 {
     protected $fillable =
     ["id", "doctor", "doctoremail", "department", "days", "time", "patientname", "patientemail", "patientphone", "patientage", "consultancyfees"];
+    
     public function user(): HasOne
     {
         return $this->hasOne(User::class, 'doctoremail', 'patientemail');

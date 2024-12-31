@@ -6,33 +6,45 @@
         <div class="col-md-10 m-auto">
          <form enctype="multipart/form-data" action="{{route('updatedoctor')}}" method="post" >
             @csrf
-                <input type="hidden" name="old_id" class="form-control mb-4" value="{{$result->id}}">
-
+                <input type="hidden" name="old_id" class="form-control mb-4" value="{{ Auth::user()->id }}">
+                <input type="hidden" name="password" class="form-control mb-4" value="{{ Auth::user()->password }}">
+                
                 <label>{{__('language.DOCTORNAME')}}</label>
-                <input type="text" name="name" class="form-control mb-4" value="{{$result->name}}">
+                <input type="text" name="name" class="form-control mb-4" value="{{ Auth::user()->name }}">
                 @error('name')
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
                 <label>{{__('language.EMAIL')}}</label>
-                <input type="email" name="email" class="form-control mb-4" value="{{$result->email}}">
+                <input type="email" name="email" class="form-control mb-4" value="{{ Auth::user()->email }}">
                 @error('email')
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <label>{{__('language.PASSWORD')}}</label>
-                <input type="password" name="password" class="form-control mb-4" value="{{$result->password}}">
-                @error('password')
-                 <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
                 <label>{{__('language.IMAGE')}}</label>
-                <input type="file" name="doc_image" class="form-control mb-4" value="{{$result->doc_image}}">
+                <input type="file" name="doc_image" class="form-control mb-4">
                 @error('image')
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <input type="hidden" name="gender" class="form-control mb-4" value="{{$result->gender}}">
+                <div class="form-group">
+                    <label class="block">
+                        {{__('language.GENDER')}}
+                    </label>
+                    <div class="clip-radio radio-primary">
+                    <input type="radio" id="rg-female" name="gender" value="female" >
+                    <label for="rg-female">
+                        {{__('language.FEMALE')}}
+                    </label>
+                    <input type="radio" id="rg-male" name="gender" value="male">
+                    <label for="rg-male">
+                        {{__('language.MALE')}}
+                    </label>
+                    </div>
+                    </div>
+                @error('gender')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <label>{{__('language.ADDRESS')}}</label>
                 <input type="text" name="address" class="form-control mb-4" value="{{$result->address}}">
@@ -78,7 +90,7 @@
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <input type="submit" value='{{__('language.EDITDOCTORACCOUNT')}}' class="form-control btn btn-success">
+                <input type="submit" value='{{__('language.UPDATEMYPROFILE')}}' class="form-control btn btn-success">
 
             </form>
         </div>
