@@ -26,7 +26,7 @@ Installation Guide:
 
 2_composer update
 
-4_Open PHPMyAdmin (http://localhost/phpmyadmin)
+3_Open PHPMyAdmin (http://localhost/phpmyadmin)
 
   *Create a database with name hospital
 
@@ -65,7 +65,8 @@ Password : 12345678
 
 email : patient2@gmail.com 
 Password : 12345678
-=================================
+
+==================================
 
 
 
