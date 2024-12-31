@@ -26,26 +26,47 @@ Installation Guide:
 
 2_composer update
 
-3_composer dump-autoload
-
 4_Open PHPMyAdmin (http://localhost/phpmyadmin)
-  Create a database with name hospital
+
+  *Create a database with name hospital
+
+  *Import db with name hospital in DB FILE in project
 
 4_php artisan migrate
 
 5_php artisan serve to run the project
 
+==============================
 
 Login Details for Admin : 
+
 email : admin@gmail.com 
 Password : 12345678
 
+email : admin2@gmail.com 
+Password : 12345678
+
+===============================
+
 Login Details for Doctor : 
+
 email : doctor@gmail.com 
 Password : 12345678
 
+email : doctor2@gmail.com 
+Password : 12345678
+
+=================================
+
 Login Details for Patient : 
+
 email : patient@gmail.com 
 Password : 12345678
+
+email : patient2@gmail.com 
+Password : 12345678
+=================================
+
+
 
 
