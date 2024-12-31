@@ -36,15 +36,9 @@ Password : 12345678
 Installation Guide:
 1)Install Composer In Your PC
 
-2)Clone Or Download The Repository
-
-3)Goto The Repository and Open a Terminal Enter Following Commands 
+2)Execute the Following Command :
     composer install
-
-4)Add the .env File(You Can Find It In The Internet)
-
-5)Set the .env File with the relevant configuration
-
-6)Execute the Following Command
+    composer update
+    composer dump-autoload
     php artisan migrate
-    php artisan serve
+    php artisan serve to run the project
