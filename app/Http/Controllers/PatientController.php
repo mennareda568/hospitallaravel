@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 class PatientController extends Controller
 {
     //show patient table
-    public function index(Request $request)
+     public function index(Request $request)
     {
-        $data = Patient::userData()->get();
+        $data = Patient::userData()->paginate(1);
         $patients = $data->count();
-        $page = Patient::paginate(1); 
-        return view('patient', compact('data','page','patients'));
+        return view('patient', compact('data','patients'));
     }
 
     //delete patient 
