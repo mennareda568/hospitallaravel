@@ -34,7 +34,7 @@ class PatientController extends Controller
     {
         $item->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:patients',
             'gender' => 'required',
             'address' => 'required',
             'phone' => 'required',
