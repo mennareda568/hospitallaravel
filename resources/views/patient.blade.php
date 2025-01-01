@@ -52,7 +52,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $page->links() }} <!-- Display pagination links -->
+                        {{ $data->links() }} <!-- Display pagination links -->
                     </div>
                 </div>
             </div>
