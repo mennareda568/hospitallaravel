@@ -41,9 +41,6 @@ Login Details for Admin :
 email : admin@gmail.com 
 Password : 12345678
 
-email : admin2@gmail.com 
-Password : 12345678
-
 ===============================
 
 Login Details for Doctor : 
