@@ -90,7 +90,6 @@ Route::group(
                 Route::post('/patients/save', 'PatientController@savenew')->name('savepatient');
                 Route::get('/patients/edit/{id}', 'PatientController@edit')->name('editpatient');
                 Route::post('/patients/update', 'PatientController@saveedit')->name('updatepatients');
-                Route::get('/searchpatient', 'PatientController@search')->name('searchpatient');
             }
         );
  
