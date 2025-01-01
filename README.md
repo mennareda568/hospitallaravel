@@ -32,9 +32,7 @@ Installation Guide:
 
   *Import db with name hospital in DB FILE in project
 
-4_php artisan migrate
-
-5_php artisan serve to run the project
+4_php artisan serve to run the project
 
 ==============================
 
