@@ -13,14 +13,6 @@
                         <a href="{{ route('createpatient') }}" 
                             class="btn btn-success mt-2">
                             {{ __('language.CREATENEWPATIENT') }}</a>                        
-                        <form action={{ route('searchpatient') }} method="get">
-                            <div class="input-group">
-                                <input type="search" name="search" class="form-control">
-                                <span class="input-group-prepend">
-                                    <button type="submit" class="btn btn-primary">{{ __('language.SEARCH') }}</button>
-                                </span>
-                            </div>
-                        </form>
                     </div>
                         @if (session('message'))
                             <h4 class="alert alert-success">{{ session('message') }}</h4>
