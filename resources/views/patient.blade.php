@@ -15,7 +15,7 @@
                             {{ __('language.CREATENEWPATIENT') }}</a>                        
                     </div>
                         @if (session('message'))
-                            <h4 class="alert alert-success">{{ session('message') }}</h4>
+                            <h4 class="alert alert-success mt-3">{{ session('message') }}</h4>
                         @endif
                         <table class="table table-dark mt-3">
                             <thead>
