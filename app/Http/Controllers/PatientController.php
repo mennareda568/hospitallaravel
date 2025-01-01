@@ -11,7 +11,7 @@ class PatientController extends Controller
     {
         $data = Patient::userData()->get();
         $patients = $data->count();
-        $page = Patient::paginate(3); 
+        $page = Patient::paginate(1); 
         return view('patient', compact('data','page','patients'));
     }
 
@@ -94,21 +94,5 @@ class PatientController extends Controller
         ]);
         return redirect()->route("patient")->with("message", "edited successfully");
     }
-
-    //search patient table 
-    public function search (Request $request)
-    {
-        $search = $request->get('search');
-        $patients = Patient::when($search, function($sql) use ($search) {
-                $sql->where('name', 'like', '%' . $search . '%');
-            })
-            ->paginate(5);
-    
-        return view('Patientsearch',  [
-            "data" => $patients,
-        ]);
-    }
-
-
 
 }
