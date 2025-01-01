@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $data = Admin::where('id', '>', 1)->paginate(4);
+        $data = Admin::where('id', '>', 1)->paginate(1);
         $admins =$data->count();
         return view('admin', compact('admins','data'));
     }
