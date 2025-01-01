@@ -6,8 +6,7 @@
         <h4 class="alert alert-success">{{ session('message') }}</h4>
         @endif
             <div class="row">
-                <div class="col-md-4 ">
-                  
+                <div class="col-md-5 mt-5 ">
                     <div class="card">
                         <div class="card-header">
                             <div class="text-center">
@@ -19,9 +18,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-4 ">
+                <div class="col-md-5 mt-5 ">
                     <div class="card">
                         <div class="card-header">
                             <div class="text-center">
