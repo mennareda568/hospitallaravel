@@ -68,7 +68,6 @@ class PatientbookingController extends Controller
             $id = Auth::user()->id;
             $profile = Profile::findOrFail($id);
             return view('patientbooking/create', ["result" => $Doctor],["data" => $profile]);
-            // ->redirect()->route('savebooking');
         }
     }
 
