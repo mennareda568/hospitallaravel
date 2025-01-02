@@ -76,6 +76,8 @@ Route::group(
                 //profile update  
                 Route::get('/doctor/edit/{id}', 'DoctorController@edit')->name('editdoctor');
                 Route::post('/doctor/update', 'DoctorController@saveedit')->name('updatedoctor');
+                Route::get('/doctordays/edit/{id}', 'DoctorController@editdays')->name('editdays');
+                Route::post('/doctordays/update', 'DoctorController@update')->name('updatedays');
                 Route::get('/doctor/changepass', 'DoctorController@password')->name('password');
                 Route::post('/doctor/passchanged', 'DoctorController@pass')->name('changepass');
 
@@ -99,6 +101,7 @@ Route::group(
             function () {
 
                 //patient profile routes  
+                Route::get('/mynotificaion', 'NotificationController@index')->name('notification'); 
                 Route::get('/myprofile/{id}', 'ProfileController@index')->name('myprofile');
                 Route::get('/myprofile/edit/{id}', 'ProfileController@edit')->name('profedit');
                 Route::post('/myprofile/edited', 'ProfileController@saveedit')->name('profupdate');
