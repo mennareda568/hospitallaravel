@@ -54,75 +54,103 @@ class DoctorController extends Controller
         return redirect()->route('doctor')->with("message", "deleted successfully");
     }
 
-
-
-    //  update profile for doctor
+  //  update profile for doctor
     public function edit($id)
     {
         $Doctor = Doctor::findOrFail($id);
-        return view("Doctor/edit",["result" => $Doctor]);
+        return view("Doctor/edit", ["result" => $Doctor]);
     }
-
- 
     //  update profile for doctor
     public function saveedit(Request $request)
     {
         $old_id = $request->old_id;
         $user = User::findOrFail($old_id);
         $Doctor = Doctor::findOrFail($old_id);
-        $docemail=$Doctor->email;
-       
+        $docemail = $Doctor->email;
+
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'doc_image' => 'max:2048|mimes:png,jpeg',
             'address' => 'required',
             'phone' => 'required',
             'department' => 'required',
             'age' => 'required',
             'gender' => 'required',
-            'days' => 'required',
-            'time' => 'required',
-            'Consultancyfees' => 'required',
         ]);
 
         if ($request->hasFile("doc_image")) {
             $image = $request->doc_image;
             $imageName = time() . rand(1, 100) . "." . $image->extension();
             $image->move(public_path("img/doctors/"), $imageName);
-   
-        }else{
-            $imageName= $Doctor->doc_image;
+        } else {
+            $imageName = $Doctor->doc_image;
         }
 
         $Doctor->update([
             "name" => $request->name,
             "email" => $request->email,
+            'password' => $request->password,
             "doc_image" => $imageName,
             "gender" => $request->gender,
             "address" => $request->address,
             "phone" => $request->phone,
             "department" => $request->department,
             "age" => $request->age,
-            "days" => $request->days,
-            "time" => $request->time,
-            "Consultancyfees" => $request->Consultancyfees,
         ]);
 
         $user->update([
             "name" => $request->name,
             "email" => $request->email,
+            'password' => $request->password,
         ]);
-        
+
         PatientBooking::where('doctoremail', $docemail)
             ->update([
                 "doctor" => $request->name,
                 "department" => $request->department,
                 'doctoremail' => $request->email,
+            ]);
+        return redirect()->route("home")->with("messagedoc", "updated successfully");
+    }
+
+
+    //  update days for doctor
+    public function editdays($id)
+    {
+        $Doctor = Doctor::findOrFail($id);
+        return view("Doctor/update", ["result" => $Doctor]);
+    }
+    //  update days for doctor
+    public function update(Request $request)
+    {
+        $old_id = $request->old_id;
+        $Doctor = Doctor::findOrFail($old_id);
+        $docemail = $Doctor->email;
+
+        $request->validate([
+            'days' => 'required',
+            'time' => 'required',
+            'Consultancyfees' => 'required',
+        ]);
+
+        $Doctor->update([
+            "days" => $request->days,
+            "time" => $request->time,
+            "Consultancyfees" => $request->Consultancyfees,
+        ]);
+
+        PatientBooking::where('doctoremail', $docemail)
+            ->update([
                 'days' => $request->days,
                 'time' => $request->time,
                 "Consultancyfees" => $request->Consultancyfees,
             ]);
+
+        $notification = new Notification();
+        $notification->message = 'Doctor ' . $Doctor->name . 'has changed his data';
+        $notification->doctoremail = $Doctor->email;
+        $notification->save();  
         return redirect()->route("home")->with("messagedoc", "updated successfully");
     }
 
