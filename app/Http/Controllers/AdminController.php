@@ -48,7 +48,6 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'gender' => 'required',
@@ -57,7 +56,6 @@ class AdminController extends Controller
         $admin->update([
             "name" => $request->name,
             "email" => $request->email,
-            "password" => $request->password,
             "address" => $request->address,
             "gender" => $request->gender,
             "phone" => $request->phone,
@@ -66,7 +64,6 @@ class AdminController extends Controller
         $user->update([
             "name" => $request->name,
             "email" => $request->email,
-            "password" => $request->password,
         ]);
         return redirect()->route("admin")->with("message", "edited successfully");
     }
@@ -81,15 +78,10 @@ class AdminController extends Controller
      public function pass(Request $request)
      {
          $old_id = $request->old_id;
-         $Admin = Admin::findOrFail($old_id);
          $user = User::findOrFail($old_id);
          $request->validate([
              'password' => 'required',
          ]);
-         $Admin->update([
-             'password' => Hash::make($request['password']),
-         ]);
- 
          $user->update([
              'password' => Hash::make($request['password']),
          ]);
