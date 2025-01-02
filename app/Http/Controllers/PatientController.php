@@ -37,7 +37,7 @@ class PatientController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'age' => 'required',
+            'age' => 'required|numeric|between:18,85',
             'medicalhistory' => 'required',
             'prescription' => 'required' 
         ]);
@@ -75,7 +75,7 @@ class PatientController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'age' => 'required',
+            'age' => 'required|numeric|between:18,85',
             'medicalhistory' => 'required',
             'prescription' => 'required' 
         ]);
