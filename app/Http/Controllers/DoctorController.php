@@ -161,7 +161,7 @@ class DoctorController extends Controller
         if ($patibook > 7) {
             return redirect()->route('home')->with("message", "No Doctors Available");
         } else {
-        $Doctor = Doctor::paginate(3);
+        $Doctor = Doctor::paginate(1);
         return view('doctorlist', [
             "element" => $Doctor,
         ]);
@@ -179,7 +179,7 @@ class DoctorController extends Controller
         $doctors = Doctor::when($search, function ($sql) use ($search) {
             $sql->where('name', 'like', '%' . $search . '%');
         })
-            ->paginate(3);
+            ->paginate(1);
 
         return view('listsearch',  [
             "data" => $doctors,
