@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Doctor;
 use App\Model\Patientbooking;
+use App\Model\Notification;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -148,7 +149,7 @@ class DoctorController extends Controller
             ]);
 
         $notification = new Notification();
-        $notification->message = 'Doctor ' . $Doctor->name . 'has changed his data';
+        $notification->message = 'Doctor ' . $Doctor->name . ' has changed his data' ;
         $notification->doctoremail = $Doctor->email;
         $notification->save();  
         return redirect()->route("home")->with("messagedoc", "updated successfully");
