@@ -63,13 +63,15 @@ class DoctorController extends Controller
         return view("Doctor/edit",["result" => $Doctor]);
     }
 
+ 
     //  update profile for doctor
     public function saveedit(Request $request)
     {
         $old_id = $request->old_id;
-        $Doctor = Doctor::findOrFail($old_id);
         $user = User::findOrFail($old_id);
-
+        $Doctor = Doctor::findOrFail($old_id);
+        $docemail=$Doctor->email;
+       
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
@@ -113,6 +115,16 @@ class DoctorController extends Controller
             "email" => $request->email,
             'password' => $request->password,
         ]);
+        
+        PatientBooking::where('doctoremail', $docemail)
+            ->update([
+                "doctor" => $request->name,
+                "department" => $request->department,
+                'doctoremail' => $request->email,
+                'days' => $request->days,
+                'time' => $request->time,
+                "Consultancyfees" => $request->Consultancyfees,
+            ]);
         return redirect()->route("home")->with("messagedoc", "updated successfully");
     }
 
