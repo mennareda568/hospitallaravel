@@ -102,6 +102,9 @@ return [
     "UPDATEMYPROFILE"=> 'Update My Profile',
     "CHANGEMYPASSWORD"=> 'Change My Password',
     "MYNOTIFICATION"=> ' My Notification',
+    "UPDATEMYDAYS"=> ' Update My Days',
+    "NOTIFICATION"=> ' Notification',
+
 
     
 
