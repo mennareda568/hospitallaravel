@@ -18,12 +18,14 @@
                                 <thead>
                                     <tr>
                                         <td>{{ __('language.MESSAGE') }}</td>
+                                         <td>{{ __('language.DATE') }}</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($result as $item)
                                         <tr>
                                             <td>{{ $item->message }}</td>
+                                            <td>{{ $item->created_at }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
