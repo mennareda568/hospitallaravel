@@ -37,7 +37,7 @@ class PatientbookingController extends Controller
 
         $request->validate([
             'patientname' => 'required',
-            'patientage' => 'required',
+            'patientage' => 'required|numeric|between:18,85',
             'patientphone' => 'required',
         ]);
 
@@ -73,7 +73,7 @@ class PatientbookingController extends Controller
         
         $item->validate([
             'patientname' => 'required',
-            'patientage' => 'required',
+            'patientage' => 'required|numeric|between:18,85',
             'patientphone' => 'required',
         ]);
 
