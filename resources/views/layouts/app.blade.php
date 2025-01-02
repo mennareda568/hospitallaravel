@@ -42,6 +42,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+
                         @if (Auth::user() && Auth::user()->role == 'admin')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin') }}">{{ __('language.ADMINS') }}</a>
@@ -59,11 +60,15 @@
                             </li>
                         @endif
 
-
                         @if (Auth::user() && Auth::user()->role == 'patient')
                             <li class="nav-item">
-                                <a class="nav-link btn btn-success" href="{{ route('profedit', Auth::user()->id)}}">{{ __('language.UPDATEMYPROFILE') }}</a>
-                            </li>                           
+                                <a class="nav-link ml-3"
+                                    href="{{ route('notification') }}">{{ __('language.MYNOTIFICATION') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-success"
+                                    href="{{ route('profedit', Auth::user()->id) }}">{{ __('language.UPDATEMYPROFILE') }}</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link btn btn-primary ml-3"
                                     href="{{ route('passpatient') }}">{{ __('language.CHANGEMYPASSWORD') }}</a>
@@ -79,8 +84,11 @@
                                 <a class="nav-link btn btn-primary ml-3"
                                     href="{{ route('password') }}">{{ __('language.CHANGEMYPASSWORD') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ route('editdays', Auth::user()->id) }}">{{ __('language.UPDATEMYDAYS') }}</a>
+                            </li>
                         @endif
-
 
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <li class="nav-item">
