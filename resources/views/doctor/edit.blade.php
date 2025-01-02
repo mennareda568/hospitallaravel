@@ -7,7 +7,6 @@
          <form enctype="multipart/form-data" action="{{route('updatedoctor')}}" method="post" >
             @csrf
                 <input type="hidden" name="old_id" class="form-control mb-4" value="{{ Auth::user()->id }}">
-                <input type="hidden" name="password" class="form-control mb-4" value="{{ Auth::user()->password }}">
                 
                 <label>{{__('language.DOCTORNAME')}}</label>
                 <input type="text" name="name" class="form-control mb-4" value="{{ Auth::user()->name }}">

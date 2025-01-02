@@ -9,7 +9,7 @@
 
                     <label>{{ __('language.PASSWORD') }}</label>
                     <br>
-                    <input type="password" name="password" class="form-control mb-4" value="{{ Auth::user()->password }}">
+                    <input type="password" name="password" class="form-control mb-4">
                     @error('password')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

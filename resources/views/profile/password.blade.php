@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 m-auto">
-                <form class="mt-5" enctype="multipart/form-data" action="{{ route('passadmin') }}" method="post">
+                <form class="mt-5" enctype="multipart/form-data" action="{{ route('passchange') }}" method="post">
                     @csrf 
                     <input type="hidden" name="old_id" value="{{ Auth::user()->id }}">
 
