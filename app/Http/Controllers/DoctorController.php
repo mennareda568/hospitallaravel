@@ -98,7 +98,6 @@ class DoctorController extends Controller
         $Doctor->update([
             "name" => $request->name,
             "email" => $request->email,
-            'password' => $request->password,
             "doc_image" => $imageName,
             "gender" => $request->gender,
             "address" => $request->address,
@@ -113,7 +112,6 @@ class DoctorController extends Controller
         $user->update([
             "name" => $request->name,
             "email" => $request->email,
-            'password' => $request->password,
         ]);
         
         PatientBooking::where('doctoremail', $docemail)
@@ -137,13 +135,9 @@ class DoctorController extends Controller
     public function pass(Request $request)
     {
         $old_id = $request->old_id;
-        $Doctor = Doctor::findOrFail($old_id);
         $user = User::findOrFail($old_id);
         $request->validate([
             'password' => 'required',
-        ]);
-        $Doctor->update([
-            'password' => Hash::make($request['password']),
         ]);
 
         $user->update([
