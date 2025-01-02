@@ -109,6 +109,8 @@ return [
     "MYPATIENTS"=> 'المرضي',
     "MYPROFILE"=> 'صفحتي',
     "MYNOTIFICATION"=> ' اشعاراتي',
+    "UPDATEMYDAYS"=> 'تحديث مواعيدي',
+    "NOTIFICATION"=> ' الاشعارات',,
     
 
 
