@@ -67,7 +67,6 @@ class HomeController extends Controller
                     'id' => $admin->id,
                     'name' => $admin->name,
                     'email' => $admin->email,
-                    'password' => $admin->password,
                 ]);
                 return redirect()->route('admin')->with("message", "Created Successfully");
 
@@ -81,7 +80,6 @@ class HomeController extends Controller
                     'id' => $doctor->id,
                     'name' => $doctor->name,
                     'email' => $doctor->email,
-                    'password' => $doctor->password,
                 ]);
                 return redirect()->route('doctor')->with("message", "Created Successfully");
             }
