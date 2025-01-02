@@ -6,7 +6,7 @@
         <div class="col-md-10 m-auto">
          <form enctype="multipart/form-data" action="{{route('updateadmin')}}" method="post" >
             @csrf
-                <input type="hidden" name="old_id" class="form-control mb-4" value="{{$result->id}}">
+                <input type="hidden" name="old_id" value="{{$result->id}}">
             
                 <label>{{__('language.ADMINNAME')}}</label>
                 <input type="text" name="name" class="form-control mb-4" value="{{$result->name}}">
