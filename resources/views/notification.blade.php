@@ -17,14 +17,18 @@
                             <table class="table table-dark ">
                                 <thead>
                                     <tr>
-                                        <td>{{ __('language.MESSAGE') }}</td>
-                                         <td>{{ __('language.DATE') }}</td>
+                                          <td>{{ __('language.MESSAGE') }}</td>
+                                          <td>{{ __('language.DATE') }}</td>
+                                          <td>{{ __('language.TIME') }}</td>
+                                          <td>{{ __('language.AT') }}</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($result as $item)
                                         <tr>
                                             <td>{{ $item->message }}</td>
+                                            <td>{{ $item->date }}</td>
+                                            <td>{{ $item->time }}</td>
                                             <td>{{ $item->created_at }}</td>
                                         </tr>
                                     @endforeach
