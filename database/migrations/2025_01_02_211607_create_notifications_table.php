@@ -16,7 +16,8 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->string('message');
-            $table->string('doctoremail')->default("null");
+            $table->string('date');
+            $table->string('time');
             $table->timestamps();
         });
     }
