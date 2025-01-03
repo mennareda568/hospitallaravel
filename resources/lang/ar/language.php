@@ -110,7 +110,9 @@ return [
     "MYPROFILE"=> 'صفحتي',
     "MYNOTIFICATION"=> ' اشعاراتي',
     "UPDATEMYDAYS"=> 'تحديث مواعيدي',
-    "NOTIFICATION"=> ' الاشعارات',,
+    "NOTIFICATION"=> ' الاشعارات',
+    "AT"=> ' في',
+
     
 
 
