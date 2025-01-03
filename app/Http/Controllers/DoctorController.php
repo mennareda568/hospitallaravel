@@ -149,9 +149,10 @@ class DoctorController extends Controller
             ]);
 
         $notification = new Notification();
-        $notification->message = 'Doctor ' . $Doctor->name . ' has changed his data' ;
-        $notification->doctoremail = $Doctor->email;
-        $notification->save();  
+        $notification->message = 'Doctor ' . $Doctor->name . ' has changed his days';
+        $notification->date = 'to ' . $request->days;
+        $notification->time = $request->time ;
+        $notification->save(); 
         return redirect()->route("home")->with("messagedoc", "updated successfully");
     }
 
